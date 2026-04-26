@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ladies War Season 1 - Blood Strike Tournament for Women</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D81B60;
+            --primary-dark: #AD1457;
+            --primary-light: #FCE4EC;
+            --dark: #1A1A1A;
+            --gray: #555555;
+            --gray-light: #E5E5E5;
+            --white: #FFFFFF;
+            --off-white: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 1000;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--white);
+            border-top: 1px solid var(--gray-light);
+            padding: 16px 24px;
+        }
+
+        .mobile-menu a {
+            padding: 12px 0;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .mobile-menu.show { display: flex; }
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 550px;
+            margin: 0 auto 35px;
+        }
+
+        /* Event Date */
+        .event-date {
+            background: var(--off-white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 20px auto;
+            font-weight: 600;
+        }
+
+        .event-date i {
+            color: var(--primary);
+            margin-right: 8px;
+        }
+
+        /* Prize Pool */
+        .prizepool {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 20px;
+            padding: 24px;
+            margin: 35px auto;
+            max-width: 550px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+
+        .prizepool:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(216,27,96,0.1);
+        }
+
+        .prizepool h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .prize-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .prize-extra {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 14px;
+        }
+
+        .prize-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            font-size: 0.7rem;
+        }
+
+        .prize-breakdown span {
+            background: var(--off-white);
+            padding: 4px 12px;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .prize-breakdown span:hover {
+            background: var(--primary-light);
+            transform: scale(1.02);
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(216,27,96,0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(216,27,96,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+            border: 1.5px solid var(--gray-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Stats */
+        .stats-counter {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin-top: 45px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+
+        /* Game Section */
+        .game-section {
+            padding: 50px 0;
+            background: var(--off-white);
+            text-align: center;
+        }
+
+        .game-section h2 {
+            margin-bottom: 30px;
+            font-size: 1.6rem;
+        }
+
+        .game-card {
+            max-width: 280px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .game-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Rules Page */
+        .rules-header {
+            text-align: center;
+            margin: 50px 0 35px;
+        }
+
+        .rules-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .rule-card {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 16px;
+            padding: 22px;
+            transition: all 0.3s;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .rule-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .rule-card p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Schedule */
+        .schedule-timeline {
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 20px 0 50px;
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 20px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-light);
+            transition: all 0.2s;
+        }
+
+        .schedule-item:hover {
+            padding-left: 10px;
+            background: var(--off-white);
+            border-radius: 10px;
+        }
+
+        .schedule-date {
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 110px;
+        }
+
+        /* Leaderboard */
+        .leaderboard-filters {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .filter-btn {
+            padding: 6px 20px;
+            background: var(--off-white);
+            border: 1px solid var(--gray-light);
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .leaderboard-table {
+            overflow-x: auto;
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        th {
+            background: var(--off-white);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        tr:hover {
+            background: var(--off-white);
+        }
+
+        /* Participants */
+        .participants-stats {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 14px;
+            background: var(--off-white);
+            border-radius: 12px;
+        }
+
+        .search-box {
+            margin: 20px 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(216,27,96,0.1);
+        }
+
+        .participants-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 500px;
+            overflow-y: auto;
+            margin-bottom: 50px;
+        }
+
+        .participant-card {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.2s;
+        }
+
+        .participant-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .participant-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Sponsor */
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px 0 50px;
+        }
+
+        .sponsor-item {
+            background: var(--off-white);
+            padding: 18px;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .sponsor-item:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            padding: 30px 0 50px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.2s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 14px;
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            padding: 30px 0 50px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .contact-card i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .wa-btn { background: #25D366; color: white; }
+        .email-btn { background: #EA4335; color: white; }
+        .ig-btn { background: linear-gradient(45deg, #f09433, #d62976); color: white; }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 550px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s;
+        }
+
+        .modal-large {
+            max-width: 800px;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 22px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.3rem;
+        }
+
+        .close {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: var(--primary);
+        }
+
+        /* Form */
+        form {
+            padding: 20px 24px 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-light);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(216,27,96,0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .checkbox-group {
+            margin: 18px 0;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-weight: normal;
+            font-size: 0.8rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 28px;
+            height: 28px;
+            border: 3px solid var(--gray-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin: 15px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Player Card */
+        .player-card {
+            background: var(--off-white);
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .player-card:hover {
+            background: var(--primary-light);
+        }
+
+        .player-card h4 {
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* Admin Panel */
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .admin-login {
+            max-width: 400px;
+            margin: 80px auto;
+            background: white;
+            border: 1px solid var(--gray-light);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .admin-login h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .admin-stat-card {
+            background: var(--off-white);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .admin-stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .admin-stat-card .number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 8px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.2s;
+        }
+
+        .admin-tab:hover {
+            color: var(--primary);
+        }
+
+        .admin-tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .admin-search {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .admin-search input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-light);
+            border-radius: 10px;
+        }
+
+        .admin-search button {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .admin-search button:hover {
+            background: var(--primary-dark);
+        }
+
+        .admin-table {
+            overflow-x: auto;
+        }
+
+        .admin-table table {
+            font-size: 0.75rem;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 10px 8px;
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.7rem;
+            margin: 2px;
+            transition: all 0.2s;
+        }
+
+        .btn-small:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-accept { background: #4CAF50; color: white; }
+        .btn-reject { background: #f44336; color: white; }
+        .btn-delete { background: #9E9E9E; color: white; }
+        .btn-wa-small { background: #25D366; color: white; text-decoration: none; display: inline-block; }
+
+        .status-pending { color: #ff9800; font-weight: 600; }
+        .status-accepted { color: #4CAF50; font-weight: 600; }
+        .status-rejected { color: #f44336; font-weight: 600; }
+
+        .logout-btn {
+            background: var(--gray-light);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: var(--gray);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--gray-light);
+            padding: 25px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--gray);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 12px;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--dark);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            z-index: 1000;
+            animation: slideInRight 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .toast.success { background: #4CAF50; }
+        .toast.error { background: #f44336; }
+        .toast.info { background: var(--primary); }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .stats-counter { gap: 20px; flex-wrap: wrap; }
+            .form-row { grid-template-columns: 1fr; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .btn { width: 200px; }
+            .toast { bottom: 20px; right: 20px; left: 20px; text-align: center; }
+        }
+        /* Pop Up Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: popupFadeIn 0.3s ease;
+}
+
+.popup-container {
+    max-width: 500px;
+    width: 90%;
+    animation: popupScale 0.3s ease;
+}
+
+.popup-content {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popup-poster-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 10;
+    transition: all 0.2s;
+}
+
+.popup-close:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.popup-button {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.popup-button:hover {
+    background: var(--primary-dark);
+}
+
+@keyframes popupFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popupScale {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Admin Page Styles */
+.admin-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    z-index: 2000;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 24px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.admin-header h2 {
+    color: var(--primary);
+}
+
+.admin-back-btn {
+    background: var(--gray-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.admin-back-btn:hover {
+    background: var(--gray);
+    color: white;
+}
+
+.admin-login-box {
+    max-width: 400px;
+    margin: 80px auto;
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.admin-login-box h3 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary);
+}
+
+.admin-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.btn-admin-login {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-admin-login:hover {
+    background: var(--primary-dark);
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.admin-stat-card {
+    background: var(--off-white);
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.admin-stat-card .number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.admin-stat-card .label {
+    font-size: 0.7rem;
+    color: var(--gray);
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-tab {
+    padding: 8px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--gray);
+    border-radius: 30px;
+    transition: all 0.2s;
+}
+
+.admin-tab:hover {
+    background: var(--primary-light);
+}
+
+.admin-tab.active {
+    background: var(--primary);
+    color: white;
+}
+
+.admin-search {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-search input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+}
+
+.admin-search button {
+    padding: 10px 24px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.admin-table {
+    overflow-x: auto;
+}
+
+.admin-table table {
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px 10px;
+    text-align: left;
+}
+
+.btn-point {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin: 2px;
+}
+
+.point-input {
+    width: 60px;
+    padding: 4px;
+    border: 1px solid var(--gray-light);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.point-display {
+    font-weight: 700;
+    color: var(--primary);
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+    <img src="Logo-main.png" style="width: 50px; height: 56px; object-fit: contain; border-radius: 8px;">
+    <div class="logo-text">Ladies <span>War</span></div>
+</div>
+            <div class="nav-links">
+                <a onclick="showPage('home')">Beranda</a>
+                <a onclick="showPage('rules')">Peraturan</a>
+                <a onclick="showPage('schedule')">Jadwal</a>
+                <a onclick="showPage('leaderboard')">Leaderboard</a>
+                <a onclick="showPage('participants')">Peserta</a>
+                <a onclick="showPage('sponsor')">Sponsor</a>
+                <a onclick="showPage('faq')">FAQ</a>
+                <a onclick="showPage('contact')">Kontak</a>
+                <a onclick="showAdminPage()" style="color: var(--primary);">Admin</a>
+            </div>
+            <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a onclick="showPage('home'); closeMobileMenu()">Beranda</a>
+            <a onclick="showPage('rules'); closeMobileMenu()">Peraturan</a>
+            <a onclick="showPage('schedule'); closeMobileMenu()">Jadwal</a>
+            <a onclick="showPage('leaderboard'); closeMobileMenu()">Leaderboard</a>
+            <a onclick="showPage('participants'); closeMobileMenu()">Peserta</a>
+            <a onclick="showPage('sponsor'); closeMobileMenu()">Sponsor</a>
+            <a onclick="showPage('faq'); closeMobileMenu()">FAQ</a>
+            <a onclick="showPage('contact'); closeMobileMenu()">Kontak</a>
+            <a onclick="showAdminPage(); closeMobileMenu()" style="color: var(--primary);">Admin Panel</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HOME PAGE -->
+        <div id="page-home" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-badge">Season 1 • 2025 • Blood Strike Tournament</div>
+                    <h1 class="hero-title">Ladies <span>War</span></h1>
+                    <p class="hero-subtitle">Turnamen Blood Strike khusus perempuan se-Indonesia.<br>Raih hadiah menarik dan buktikan kemampuanmu!</p>
+                    
+                    <div class="event-date">
+                        <i class="fas fa-calendar-alt"></i> 31 Mei 2026 • Grand Final Live Streaming
+                    </div>
+                    
+                    <div class="prizepool">
+                        <h3>Total Hadiah</h3>
+                        <div class="prize-amount">Rp 250.000</div>
+                        <div class="prize-extra">+ 3000 Gold • E-Certificate • Merchandise • Voucher</div>
+                        <div class="prize-breakdown">
+                            <span>🥇 Juara 1: 1500 Gold + Merchandise + E-Certificate + Voucher</span>
+                            <span>🥈 Juara 2: 1250 Gold + Merchandise + E-Certificate</span>
+                            <span>🥉 Juara 3: 750 Gold + Merchandise + E-Certificate</span>
+                            <span>⭐ MVP: E-Certificate + Merchandise</span>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="btnSolo"><i class="fas fa-user-plus"></i> Daftar Solo</button>
+                        <button class="btn btn-secondary" id="btnSquad"><i class="fas fa-users"></i> Daftar Squad</button>
+                    </div>
+                    
+                    <div class="stats-counter">
+                        <div class="stat-item"><span class="stat-number" id="totalParticipants">0</span><span class="stat-label">Total Peserta</span></div>
+                        <div class="stat-item"><span class="stat-number" id="totalTeams">0</span><span class="stat-label">Total Team</span></div>
+                        <div class="stat-item"><span class="stat-number" id="remainingSlots">0</span><span class="stat-label">Slot Tersisa</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-section">
+                <div class="container">
+                    <h2>Official Game</h2>
+                    <div class="game-card">
+                        <i class="fas fa-crosshairs"></i>
+                        <h3>Blood Strike</h3>
+                        <p>MODE BATTLE ROYAL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RULES PAGE -->
+        <div id="page-rules" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Peraturan Turnamen</h2>
+                    <p>Baca dengan teliti sebelum mendaftar</p>
+                </div>
+                <div class="rules-grid">
+                    <div class="rule-card"><h3><i class="fas fa-venus"></i> Khusus Perempuan</h3><p>Peserta wajib berjenis kelamin perempuan. Verifikasi identitas.</p></div>
+                    <div class="rule-card"><h3><i class="fas fa-chart-line"></i> Minimum Rank</h3><p>Blood Strike: Bebas Tidak memandang tier</p></div>
+                    <div class="rule-card"><h3><i class="fas fa-ban"></i> Dilarang Cheat</h3><p>Penggunaan cheat/hack akan menyebabkan diskualifikasi permanen.</p></div>
+                    <div class="rule-card"><h3><i class="fas fa-clock"></i> Jadwal</h3><p>Jadwal pertandingan akan diinformasikan via WhatsApp official.</p></div>
+                    <div class="rule-card"><h3><i class="fas fa-gift"></i> Hadiah</h3><p>Hadiah akan dikirim maksimal 7 hari setelah turnamen.</p></div>
+                    <div class="rule-card"><h3><i class="fas fa-gavel"></i> Keputusan Panitia</h3><p>Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCHEDULE PAGE -->
+        <div id="page-schedule" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Jadwal Turnamen</h2>
+                    <p>Catat tanggal-tanggal penting berikut</p>
+                </div>
+                <div class="schedule-timeline">
+                    <div class="schedule-item"><div class="schedule-date">1-27 Mei 2026</div><div>Pendaftaran dibuka</div></div>
+                    <div class="schedule-item"><div class="schedule-date">26-28 Mei 2026</div><div>Verifikasi Peserta</div></div>
+                    <div class="schedule-item"><div class="schedule-date">28 Mei 2026</div><div>Techical Meeting</div></div>
+                    <div class="schedule-item"><div class="schedule-date">29-30 Mei 2026</div><div>Kualifikasi</div></div>
+                    <div class="schedule-item"><div class="schedule-date">31 Mei 2026</div><div>Grand Final (Live Streaming)</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEADERBOARD PAGE -->
+        <div id="page-leaderboard" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Leaderboard</h2>
+                    <p>Peringkat sementara Ladies War Season 1</p>
+                </div>
+                <div class="leaderboard-filters">
+                    <button class="filter-btn active" data-filter="all">Semua</button>
+                    <button class="filter-btn" data-filter="solo">Solo</button>
+                    <button class="filter-btn" data-filter="squad">Squad</button>
+                </div>
+                <div class="leaderboard-table">
+                    <table id="leaderboardTable">
+                        <thead><tr><th>Rank</th><th>Nama</th><th>Kategori</th><th>Poin</th><th>Match</th><th>Status</th></tr></thead>
+                        <tbody id="leaderboardBody"><tr><td colspan="6" style="text-align:center">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTICIPANTS PAGE -->
+        <div id="page-participants" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Daftar Peserta</h2>
+                    <p>Semua peserta yang sudah mendaftar</p>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchParticipant" placeholder="Cari nama peserta atau team...">
+                </div>
+                <div class="participants-stats">
+                    <span>Total: <strong id="totalCount">0</strong></span>
+                    <span>Solo: <strong id="soloTotalCount">0</strong></span>
+                    <span>Squad: <strong id="squadTotalCount">0</strong></span>
+                </div>
+                <div class="participants-list" id="participantsList"></div>
+            </div>
+        </div>
+
+        <!-- SPONSOR PAGE -->
+        <div id="page-sponsor" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Supported By</h2>
+                    <p>Terima kasih kepada sponsor kami</p>
+                </div>
+                <div class="sponsor-grid">
+                    <div class="sponsor-item">ScrimBaseID</div>
+                    <div class="sponsor-item">Ladies Gank</div>
+                    <div class="sponsor-item">Bloodstrike Indonesia</div>
+                    <div class="sponsor-item">NetEase</div>
+                    <div class="sponsor-item">JB Tokies</div>
+                    <div class="sponsor-item">Sabada Organizer</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ PAGE -->
+        <div id="page-faq" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Pertanyaan yang sering diajukan</p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item"><div class="faq-question">Apakah boleh mendaftar lebih dari satu kategori?</div><div class="faq-answer">Tidak, setiap peserta hanya boleh mendaftar di salah satu kategori (Solo atau Squad).</div></div>
+                    <div class="faq-item"><div class="faq-question">Berapa maksimal usia peserta?</div><div class="faq-answer">Tidak ada batasan usia.</div></div>
+                    <div class="faq-item"><div class="faq-question">Apakah ada biaya pendaftaran?</div><div class="faq-answer">Pendaftaran GRATIS! Tidak dipungut biaya apapun.</div></div>
+                    <div class="faq-item"><div class="faq-question">Bagaimana cara verifikasi gender?</div><div class="faq-answer">Verifikasi dengan melengkapi data data Pendaftaran juga akan di Verifikasi ulang saat h-1.</div></div>
+                    <div class="faq-item"><div class="faq-question">Apa game yang dipertandingkan?</div><div class="faq-answer">Blood Strike dengan mode battle royal.</div></div>
+                    <div class="faq-item"><div class="faq-question">Hadiah diberikan kapan?</div><div class="faq-answer">Hadiah akan ditransfer maksimal H+7 setelah turnamen selesai.</div></div>
+                    <div class="faq-item"><div class="faq-question">Saya tidak punya team apakah bisa daftar solo?</div><div class="faq-answer">Kalian Bisa Daftar Solo dan kami akan mencarikan anda team.</div></div>
+                    <div class="faq-item"><div class="faq-question">Apakah cowo boleh ikut?</div><div class="faq-answer">Tidak Boleh ikut, dikarenakan Tournament ini khusus para kaum ciwi ciwi.</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="page-contact" class="page">
+            <div class="container">
+                <div class="rules-header">
+                    <h2>Hubungi Kami</h2>
+                    <p>Untuk informasi lebih lanjut</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><p>+62 889-9173-4780</p><a href="https://wa.me/6288991734780" target="_blank" class="contact-btn wa-btn">Chat Now</a></div>
+                    <div class="contact-card"><i class="far fa-envelope"></i><h3>Email</h3><p>owner@scrimbaseid.netlify.app</p><a href="mailto:owner@scrimbaseid.netlify.app" class="contact-btn email-btn">Send Email</a></div>
+                    <div class="contact-card"><i class="fab fa-tiktok"></i><h3>TikTok</h3><p>@scrimbaseid</p><a href="https://tiktok.com/@scrimbaseid" class="contact-btn tiktok-btn">Follow</a></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL SOLO -->
+    <div id="modalSolo" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Daftar Solo</h2><span class="close">&times;</span></div>
+            <form id="soloForm">
+                <div class="form-group"><label>Nama Lengkap</label><input type="text" id="soloNama" required></div>
+                <div class="form-group"><label>Nickname Blood Strike</label><input type="text" id="soloNick" required></div>
+                <div class="form-group"><label>UID Blood Strike</label><input type="text" id="soloUID" pattern="[0-9]+" required></div>
+                <div class="form-group"><label>Nomor WhatsApp</label><input type="tel" id="soloWA" placeholder="6281234567890" required></div>
+                <div class="form-group"><label>Email</label><input type="email" id="soloEmail" required></div>
+                <div class="form-group"><label>Kota / Region</label><input type="text" id="soloKota" required></div>
+                <div class="form-group"><label>Link Instagram / TikTok</label><input type="url" id="soloSosmed" required></div>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="soloGender" required> Saya perempuan</label>
+                    <label><input type="checkbox" id="soloDataBenar" required> Data yang saya isi benar</label>
+                    <label><input type="checkbox" id="soloSetuju" required> Saya menyetujui peraturan turnamen</label>
+                </div>
+                <button type="submit" class="btn-submit">Kirim Pendaftaran</button>
+                <div id="soloLoading" class="loading-spinner"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL SQUAD -->
+    <div id="modalSquad" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header"><h2>Daftar Squad</h2><span class="close">&times;</span></div>
+            <form id="squadForm">
+                <div class="form-row">
+                    <div class="form-group"><label>Nama Team</label><input type="text" id="teamName" required></div>
+                    <div class="form-group"><label>Nama Perwakilan</label><input type="text" id="teamRep" required></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Nomor WA Perwakilan</label><input type="tel" id="teamWA" required></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="teamEmail" required></div>
+                </div>
+                <div class="form-group"><label>Link Instagram Team</label><input type="url" id="teamIg" required></div>
+                <h3 style="margin: 15px 0 10px; font-size: 1rem;">Player Inti (4 orang)</h3>
+                <div id="playersInti"></div>
+                <h3 style="margin: 15px 0 10px; font-size: 1rem;">Pemain Cadangan (2 orang)</h3>
+                <div id="playersCadangan"></div>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="squadAllFemale" required> Seluruh anggota team perempuan</label>
+                    <label><input type="checkbox" id="squadVerifikasi" required> Siap diverifikasi</label>
+                    <label><input type="checkbox" id="squadSetuju" required> Menyetujui peraturan</label>
+                </div>
+                <button type="submit" class="btn-submit">Daftarkan Squad</button>
+                <div id="squadLoading" class="loading-spinner"></div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- ADMIN PAGE (Hidden by default) -->
+<div id="adminPage" class="admin-page" style="display: none;">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2><i class="fas fa-shield-alt"></i> Ladies War Admin Panel</h2>
+            <button class="admin-back-btn" onclick="hideAdminPage()"><i class="fas fa-arrow-left"></i> Kembali</button>
+        </div>
+        
+        <div id="adminLoginViewPage">
+            <div class="admin-login-box">
+                <h3>Login Admin</h3>
+                <input type="text" id="adminUserPage" placeholder="Username" class="admin-input">
+                <input type="password" id="adminPassPage" placeholder="Password" class="admin-input">
+                <button class="btn-admin-login" onclick="adminLoginPage()">Login</button>
+                <p style="text-align:center; margin-top:12px; font-size:0.7rem;">gaperlu tau ya hihi(><)</p>
+            </div>
+        </div>
+        
+        <div id="adminDashboardPage" style="display: none;">
+            <div class="admin-stats" id="adminStatsPage"></div>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-admin-tab-page="all">Semua</button>
+                <button class="admin-tab" data-admin-tab-page="solo">Solo</button>
+                <button class="admin-tab" data-admin-tab-page="squad">Squad</button>
+                <button class="admin-tab" data-admin-tab-page="pending">Pending</button>
+                <button class="admin-tab" data-admin-tab-page="accepted">Accepted</button>
+                <button class="admin-tab" data-admin-tab-page="rejected">Rejected</button>
+            </div>
+            
+            <div class="admin-search">
+                <input type="text" id="adminSearchPage" placeholder="Cari nama atau WA...">
+                <button onclick="exportToCSVPage()"><i class="fas fa-download"></i> Export CSV</button>
+            </div>
+            
+            <div class="admin-table">
+                <table id="adminTablePage">
+                    <thead>
+                        <tr>
+                            <th>No</th><th>Nama/Team</th><th>Jenis</th><th>WA</th><th>Poin</th><th>Tgl</th><th>Status</th><th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBodyPage"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ladies War Tournament. Organized by scrimbaseid & Sabada Organizer.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- POP UP 1 - POSTER -->
+<div id="popup1" class="popup-overlay">
+    <div class="popup-container">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup(1)">✕</button>
+            <img src="poster-utama.png" alt="poster utama"class="popup-poster-img">
+            <button class="popup-button" onclick="closePopup(1)">Next →</button>
+        </div>
+    </div>
+</div>
+
+<!-- POP UP 2 - POSTER 2 -->
+<div id="popup2" class="popup-overlay" style="display: none;">
+    <div class="popup-container">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup(2)">✕</button>
+            <img src="jb.png" alt="Poster jb" class="popup-poster-img">
+            <button class="popup-button" onclick="closePopup(2)">Tutup</button>
+        </div>
+    </div>
+</div>
+<!-- POP UP 3 - POSTER 3 -->
+<div id="popup3" class="popup-overlay" style="display: none;">
+    <div class="popup-container">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup(3)">✕</button>
+            <img src="linkposter.png" alt="Poster link" class="popup-poster-img">
+            <button class="popup-button" onclick="closePopup(3)">Tutup</button>
+        </div>
+    </div>
+</div>
+
+    <!-- Firebase SDK -->
+    <script type="importmap">
+        {
+            "imports": {
+                "firebase/app": "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js",
+                "firebase/firestore": "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"
+            }
+        }
+    </script>
+
+
+
+<script type="module">
+        import { initializeApp } from "firebase/app";
+        import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, deleteDoc, query, orderBy, serverTimestamp } from "firebase/firestore";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBrxGRWl2rKxmr3j9F8--PwwnkpnmKXpqE",
+            authDomain: "ladies-war-regist.firebaseapp.com",
+            projectId: "ladies-war-regist",
+            storageBucket: "ladies-war-regist.firebasestorage.app",
+            messagingSenderId: "264080590701",
+            appId: "1:264080590701:web:a55e9c7360de43d3423c64",
+            measurementId: "G-HPRJEXXG1K"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        
+        console.log("✅ Firebase connected!");
+
+        let registrations = [];
+
+        async function loadDataFromFirebase() {
+            try {
+                const q = query(collection(db, "registrations"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                registrations = [];
+                querySnapshot.forEach((doc) => {
+                    registrations.push({ id: doc.id, ...doc.data() });
+                });
+                // SYNC KE WINDOW UNTUK ADMIN
+                window.registrations = registrations;
+                
+                console.log(`Loaded ${registrations.length} data`);
+                updateAllDisplays();
+                
+                // Update admin panel jika terbuka
+                if(typeof renderAdminTablePage !== 'undefined') renderAdminTablePage();
+                if(typeof updateAdminStatsPage !== 'undefined') updateAdminStatsPage();
+            } catch (error) {
+                console.error("Error loading data:", error);
+            }
+        }
+
+        function updateAllDisplays() {
+            updateStats();
+            updateLeaderboard();
+            updateParticipantsList();
+        }
+
+        function updateStats() {
+            const soloCount = registrations.filter(r => r.type === 'solo').length;
+            const squadCount = registrations.filter(r => r.type === 'squad').length;
+            const totalParticipants = soloCount + (squadCount * 6);
+            document.getElementById('totalParticipants').innerText = totalParticipants;
+            document.getElementById('totalTeams').innerText = squadCount;
+            document.getElementById('remainingSlots').innerText = Math.max(0, 180 - totalParticipants);
+        }
+
+        function updateLeaderboard() {
+            const participants = registrations.map(r => ({
+                name: r.type === 'solo' ? (r.nickname || r.nama) : r.teamName,
+                type: r.type,
+                points: r.points || 0,
+                match: r.match || 0,
+                status: r.status
+            }));
+            const sorted = participants.sort((a,b) => b.points - a.points);
+            const tbody = document.getElementById('leaderboardBody');
+            if(sorted.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6">Belum ada数据</td></tr>';
+                return;
+            }
+            tbody.innerHTML = sorted.map((p, idx) => `<tr>
+                    <td>${idx+1}</td>
+                    <td><strong>${p.name || '-'}</strong></td>
+                    <td>${p.type === 'solo' ? 'Solo' : 'Squad'}</td>
+                    <td style="color:#D81B60;font-weight:700">${p.points}</td>
+                    <td>${p.match}</td>
+                    <td class="status-${p.status}">${p.status === 'accepted' ? 'Active' : (p.status === 'rejected' ? 'Rejected' : 'Pending')}</td>
+                </tr>`).join('');
+        }
+
+        function updateParticipantsList() {
+            const container = document.getElementById('participantsList');
+            const soloTotal = registrations.filter(r => r.type === 'solo').length;
+            const squadTotal = registrations.filter(r => r.type === 'squad').length;
+            document.getElementById('totalCount').innerText = registrations.length;
+            document.getElementById('soloTotalCount').innerText = soloTotal;
+            document.getElementById('squadTotalCount').innerText = squadTotal;
+            if(registrations.length === 0) { 
+                container.innerHTML = '<div style="text-align:center;padding:40px;">Belum ada peserta</div>'; 
+                return; 
+            }
+            container.innerHTML = registrations.map(r => {
+                const name = r.type === 'solo' ? (r.nickname || r.nama) : r.teamName;
+                return `<div class="participant-card" data-name="${(name || '').toLowerCase()}">
+                    <div class="participant-avatar">${(name || '?').charAt(0)}</div>
+                    <div class="participant-info">
+                        <h4>${name}</h4>
+                        <p>${r.type === 'solo' ? 'Solo Player' : 'Squad Team'} • ${r.kota || 'Indonesia'}</p>
+                        <p><i class="fab fa-whatsapp"></i> ${r.wa}</p>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        async function submitSolo(e) {
+            e.preventDefault();
+            const loading = document.getElementById('soloLoading');
+            loading.style.display = 'block';
+            try {
+                await addDoc(collection(db, "registrations"), {
+                    nama: document.getElementById('soloNama').value,
+                    nickname: document.getElementById('soloNick').value,
+                    uid: document.getElementById('soloUID').value,
+                    wa: document.getElementById('soloWA').value,
+                    email: document.getElementById('soloEmail').value,
+                    kota: document.getElementById('soloKota').value,
+                    sosmed: document.getElementById('soloSosmed').value,
+                    type: 'solo', status: 'pending', points: 0, match: 0,
+                    timestamp: serverTimestamp(), date: new Date().toISOString()
+                });
+                showToast('✅ Pendaftaran berhasil!', 'success');
+                document.getElementById('modalSolo').style.display = 'none';
+                document.getElementById('soloForm').reset();
+                await loadDataFromFirebase();
+            } catch (error) { 
+                showToast('Error: ' + error.message, 'error'); 
+            } finally { 
+                loading.style.display = 'none'; 
+            }
+        }
+
+        async function submitSquad(e) {
+            e.preventDefault();
+            const loading = document.getElementById('squadLoading');
+            loading.style.display = 'block';
+            try {
+                let inti = [], cadangan = [];
+                for(let i=1;i<=4;i++) inti.push({ 
+                    nick: document.getElementById(`intiNick${i}`).value, 
+                    uid: document.getElementById(`intiUID${i}`).value, 
+                    medsos: document.getElementById(`intiMedsos${i}`).value 
+                });
+                for(let i=1;i<=2;i++) cadangan.push({ 
+                    nick: document.getElementById(`cadNick${i}`).value, 
+                    uid: document.getElementById(`cadUID${i}`).value, 
+                    medsos: document.getElementById(`cadMedsos${i}`).value 
+                });
+                await addDoc(collection(db, "registrations"), {
+                    teamName: document.getElementById('teamName').value,
+                    perwakilan: document.getElementById('teamRep').value,
+                    wa: document.getElementById('teamWA').value,
+                    email: document.getElementById('teamEmail').value,
+                    igTeam: document.getElementById('teamIg').value,
+                    playersInti: inti, playersCadangan: cadangan,
+                    type: 'squad', status: 'pending', points: 0, match: 0,
+                    timestamp: serverTimestamp(), date: new Date().toISOString()
+                });
+                showToast('✅ Squad berhasil didaftarkan!', 'success');
+                document.getElementById('modalSquad').style.display = 'none';
+                document.getElementById('squadForm').reset();
+                await loadDataFromFirebase();
+            } catch (error) { 
+                showToast('Error: ' + error.message, 'error'); 
+            } finally { 
+                loading.style.display = 'none'; 
+            }
+        }
+
+        function generatePlayerFields() {
+            const inti = document.getElementById('playersInti');
+            if(inti) {
+                inti.innerHTML = '';
+                for(let i=1;i<=4;i++) inti.innerHTML += `<div class="player-card">
+                    <h4>Inti Player ${i}</h4>
+                    <div class="form-group"><label>Nickname</label><input type="text" id="intiNick${i}" required></div>
+                    <div class="form-group"><label>UID</label><input type="text" id="intiUID${i}" pattern="[0-9]+" required></div>
+                    <div class="form-group"><label>Link Medsos</label><input type="url" id="intiMedsos${i}" required></div>
+                </div>`;
+            }
+            const cad = document.getElementById('playersCadangan');
+            if(cad) {
+                cad.innerHTML = '';
+                for(let i=1;i<=2;i++) cad.innerHTML += `<div class="player-card">
+                    <h4>Cadangan ${i}</h4>
+                    <div class="form-group"><label>Nickname</label><input type="text" id="cadNick${i}" required></div>
+                    <div class="form-group"><label>UID</label><input type="text" id="cadUID${i}" pattern="[0-9]+" required></div>
+                    <div class="form-group"><label>Link Medsos</label><input type="url" id="cadMedsos${i}" required></div>
+                </div>`;
+            }
+        }
+
+        window.showPage = function(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(`page-${pageId}`).classList.add('active');
+            window.scrollTo({ top: 0 });
+        };
+        
+        window.closeMobileMenu = () => document.getElementById('mobileMenu').classList.remove('show');
+        
+        window.showToast = function(msg, type) {
+            const t = document.createElement('div');
+            t.className = `toast ${type}`;
+            t.innerHTML = msg;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 3000);
+        };
+        
+        function initFaq() { 
+            document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', function() { 
+                this.parentElement.classList.toggle('active'); 
+            })); 
+        }
+        
+        function initModals() {
+            const ms = document.getElementById('modalSolo'), mq = document.getElementById('modalSquad');
+            document.getElementById('btnSolo').onclick = () => ms.style.display = 'flex';
+            document.getElementById('btnSquad').onclick = () => mq.style.display = 'flex';
+            document.querySelectorAll('.close').forEach(btn => btn.onclick = function() { 
+                ms.style.display = 'none'; 
+                mq.style.display = 'none'; 
+            });
+            window.onclick = (e) => { 
+                if(e.target === ms) ms.style.display = 'none'; 
+                if(e.target === mq) mq.style.display = 'none'; 
+            };
+        }
+        
+        function initSearch() {
+            document.getElementById('searchParticipant')?.addEventListener('input', (e) => {
+                const kw = e.target.value.toLowerCase();
+                document.querySelectorAll('#participantsList .participant-card').forEach(c => { 
+                    c.style.display = (c.dataset.name || '').includes(kw) ? '' : 'none'; 
+                });
+            });
+        }
+        
+        function initLeaderboardFilter() {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.onclick = function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('#leaderboardBody tr').forEach(row => {
+                        if(filter === 'all') row.style.display = '';
+                        else { 
+                            const cat = row.cells[2]?.innerText.toLowerCase(); 
+                            row.style.display = cat.includes(filter) ? '' : 'none'; 
+                        }
+                    });
+                };
+            });
+        }
+        
+        function initMobileMenu() {
+            document.getElementById('hamburgerBtn').onclick = () => document.getElementById('mobileMenu').classList.toggle('show');
+        }
+        
+        async function init() {
+            generatePlayerFields();
+            initFaq();
+            initModals();
+            initMobileMenu();
+            initSearch();
+            initLeaderboardFilter();
+            document.getElementById('soloForm').addEventListener('submit', submitSolo);
+            document.getElementById('squadForm').addEventListener('submit', submitSquad);
+            await loadDataFromFirebase();
+            console.log('✅ Ladies War ready!');
+            showToast('Selamat datang di Ladies War Season 1!', 'success');
+        }
+        
+        // ==================== EXPOSE FUNCTIONS FOR ADMIN ====================
+window.updatePointsFirebase = async function(id, newPoints) {
+    const docRef = doc(db, "registrations", id);
+    await updateDoc(docRef, { points: newPoints });
+};
+
+window.updateStatusFirebase = async function(id, status) {
+    const docRef = doc(db, "registrations", id);
+    await updateDoc(docRef, { status: status });
+};
+
+window.deleteDataFirebase = async function(id) {
+    const docRef = doc(db, "registrations", id);
+    await deleteDoc(docRef);
+};
+
+window.updateLeaderboard = updateLeaderboard;
+        
+        init();
+    </script>
+    
+<script>
+    // ==================== POP UP FUNCTIONS ====================
+    function showPopup(num) {
+        const p = document.getElementById(`popup${num}`);
+        if(p) { p.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    }
+    function closePopup(num) {
+        const p = document.getElementById(`popup${num}`);
+        if(p) {
+            p.style.display = 'none';
+            if(num === 1) showPopup(2);
+            else if(num === 2) showPopup(3);
+            else if(num === 3) { document.body.style.overflow = ''; localStorage.setItem('popupShown', 'true'); }
+        }
+    }
+    window.addEventListener('DOMContentLoaded', () => { if(!localStorage.getItem('popupShown')) setTimeout(() => showPopup(1), 500); });
+
+    // Background music
+    const bgAudio = document.getElementById('bgMusic');
+    if(bgAudio) { bgAudio.volume = 0.3; bgAudio.play().catch(() => document.body.addEventListener('click', () => bgAudio.play(), { once: true })); }
+
+    // ==================== GLOBAL VARIABLES ====================
+    let adminFilter = 'all';
+    let adminSearch = '';
+
+    // ==================== SHOW/HIDE ADMIN PAGE ====================
+    window.showAdminPage = () => { 
+        document.getElementById('adminPage').style.display = 'block'; 
+        document.body.style.overflow = 'hidden';
+        // Refresh data from global registrations
+        if(typeof window.registrations !== 'undefined') {
+            renderAdminTablePage();
+            updateAdminStatsPage();
+        }
+    };
+    
+    window.hideAdminPage = () => { 
+        document.getElementById('adminPage').style.display = 'none'; 
+        document.body.style.overflow = ''; 
+    };
+    
+    // ==================== ADMIN LOGIN ====================
+    window.adminLoginPage = () => {
+        const u = document.getElementById('adminUserPage').value;
+        const p = document.getElementById('adminPassPage').value;
+        if(u === 'admin' && p === 'admin123') {
+            document.getElementById('adminLoginViewPage').style.display = 'none';
+            document.getElementById('adminDashboardPage').style.display = 'block';
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            showToast('✅ Login berhasil!', 'success');
+        } else {
+            showToast('❌ Username atau password salah!', 'error');
+        }
+    };
+    
+    // ==================== RENDER ADMIN TABLE ====================
+    window.renderAdminTablePage = () => {
+        let allData = window.registrations || [];
+        
+        let filtered = [...allData];
+        
+        // Filter by type/status
+        if(adminFilter !== 'all' && !['pending','accepted','rejected'].includes(adminFilter)) {
+            filtered = filtered.filter(r => r.type === adminFilter);
+        }
+        if(['pending','accepted','rejected'].includes(adminFilter)) {
+            filtered = filtered.filter(r => r.status === adminFilter);
+        }
+        
+        // Search filter
+        if(adminSearch) {
+            filtered = filtered.filter(r => { 
+                const name = r.type === 'solo' ? (r.nama || r.nickname || '') : (r.teamName || ''); 
+                return name.toLowerCase().includes(adminSearch) || (r.wa || '').includes(adminSearch); 
+            });
+        }
+        
+        const tbody = document.getElementById('adminTableBodyPage');
+        if(!tbody) return;
+        
+        if(filtered.length === 0) { 
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center">Tidak ada data</td></tr>'; 
+            return; 
+        }
+        
+        tbody.innerHTML = filtered.map((r, idx) => {
+            const name = r.type === 'solo' ? (r.nama || r.nickname || '-') : (r.teamName || '-');
+            const statusClass = r.status === 'accepted' ? 'status-accepted' : (r.status === 'rejected' ? 'status-rejected' : 'status-pending');
+            const statusText = r.status === 'accepted' ? '✅ Diterima' : (r.status === 'rejected' ? '❌ Ditolak' : '⏳ Menunggu');
+            const date = r.date ? new Date(r.date).toLocaleDateString('id-ID') : '-';
+            const points = r.points || 0;
+            return `
+                <tr id="row-${r.id}">
+                    <td>${idx+1}</td>
+                    <td><strong>${escapeHtml(name)}</strong><br><small style="color:gray">${r.id ? r.id.slice(-8) : '-'}</small></td>
+                    <td>${r.type === 'solo' ? '🎮 Solo' : '👥 Squad'}</td>
+                    <td><a href="https://wa.me/${(r.wa || '').replace(/^0/, '62').replace(/[^0-9]/g, '')}" target="_blank" style="color:#25D366;">📱 ${r.wa || '-'}</a></td>
+                    <td class="point-display">
+                        <strong style="font-size:1.1rem;">${points}</strong>
+                        <br>
+                        <div style="display:flex;gap:3px;margin-top:5px;">
+                            <input type="number" id="pointInput-${r.id}" class="point-input" placeholder="+/-" value="0" step="1" style="width:55px;">
+                            <button class="btn-point" onclick="updatePoints('${r.id}')">Set</button>
+                        </div>
+                    </td>
+                    <td>${date}</td>
+                    <td class="${statusClass}">${statusText}</td>
+                    <td>
+                        <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                            <button class="btn-small btn-accept" onclick="updateStatus('${r.id}', 'accepted')" ${r.status === 'accepted' ? 'disabled' : ''}>Accept</button>
+                            <button class="btn-small btn-reject" onclick="updateStatus('${r.id}', 'rejected')" ${r.status === 'rejected' ? 'disabled' : ''}>Reject</button>
+                            <button class="btn-small btn-delete" onclick="deleteData('${r.id}')">Delete</button>
+                            <button class="btn-small" onclick="viewDetail('${r.id}')" style="background:#2196F3;color:white;">Detail</button>
+                            <a href="https://wa.me/${(r.wa || '').replace(/^0/, '62').replace(/[^0-9]/g, '')}" target="_blank" class="btn-small btn-wa-small">WA</a>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    };
+    
+    // ==================== UPDATE POINTS ====================
+    window.updatePoints = async function(id) {
+        const input = document.getElementById(`pointInput-${id}`);
+        const change = parseInt(input.value);
+        if(isNaN(change)) { 
+            showToast('Masukkan angka yang valid!', 'error'); 
+            return; 
+        }
+        
+        let currentData = window.registrations || [];
+        const idx = currentData.findIndex(r => r.id === id);
+        if(idx !== -1) {
+            const oldPoints = currentData[idx].points || 0;
+            const newPoints = oldPoints + change;
+            currentData[idx].points = newPoints;
+            window.registrations = currentData;
+            
+            try {
+                // Panggil fungsi dari module utama
+                if(typeof window.updatePointsFirebase === 'function') {
+                    await window.updatePointsFirebase(id, newPoints);
+                }
+                
+                // Update tampilan
+                const pointCell = document.getElementById(`points-${id}`).parentElement;
+                if(pointCell) {
+                    document.getElementById(`points-${id}`).innerHTML = `<strong style="font-size:1.1rem;">${newPoints}</strong><br><div style="display:flex;gap:3px;margin-top:5px;"><input type="number" id="pointInput-${id}" class="point-input" placeholder="+/-" value="0" step="1" style="width:55px;"><button class="btn-point" onclick="updatePoints('${id}')">Set</button></div>`;
+                }
+                input.value = 0;
+                showToast(`✅ Poin: ${oldPoints} → ${newPoints}`, 'success');
+                
+                // Update leaderboard
+                if(typeof updateLeaderboard === 'function') updateLeaderboard();
+            } catch(e) { 
+                showToast('Error: ' + e.message, 'error'); 
+            }
+        }
+    };
+    
+    // ==================== UPDATE STATUS ====================
+    window.updateStatus = async function(id, status) {
+        try {
+            if(typeof window.updateStatusFirebase === 'function') {
+                await window.updateStatusFirebase(id, status);
+            }
+            
+            // Update local data
+            let currentData = window.registrations || [];
+            const idx = currentData.findIndex(r => r.id === id);
+            if(idx !== -1) {
+                currentData[idx].status = status;
+                window.registrations = currentData;
+            }
+            
+            showToast(`✅ Status diubah menjadi ${status === 'accepted' ? 'Diterima' : 'Ditolak'}!`, 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        } catch(e) { 
+            showToast('Error: ' + e.message, 'error'); 
+        }
+    };
+    
+    // ==================== DELETE DATA ====================
+    window.deleteData = async function(id) {
+        if(confirm('⚠️ Yakin hapus data ini? Tidak bisa dibatalkan!')) {
+            try {
+                if(typeof window.deleteDataFirebase === 'function') {
+                    await window.deleteDataFirebase(id);
+                }
+                
+                // Update local data
+                let currentData = window.registrations || [];
+                currentData = currentData.filter(r => r.id !== id);
+                window.registrations = currentData;
+                
+                showToast('🗑️ Data berhasil dihapus!', 'success');
+                renderAdminTablePage();
+                updateAdminStatsPage();
+                if(typeof updateLeaderboard === 'function') updateLeaderboard();
+            } catch(e) { 
+                showToast('Error: ' + e.message, 'error'); 
+            }
+        }
+    };
+    
+    // ==================== VIEW DETAIL ====================
+    window.viewDetail = function(id) {
+        let currentData = window.registrations || [];
+        const data = currentData.find(r => r.id === id);
+        if(!data) {
+            showToast('Data tidak ditemukan!', 'error');
+            return;
+        }
+        
+        let detailHtml = '';
+        if(data.type === 'solo') {
+            detailHtml = `
+                <div style="padding:16px;">
+                    <h3 style="color:#D81B60;">📋 Detail Solo Player</h3>
+                    <p><strong>ID:</strong> ${data.id}</p>
+                    <p><strong>Nama:</strong> ${escapeHtml(data.nama || '-')}</p>
+                    <p>strong>Nickname:</strong> ${escapeHtml(data.nickname || '-')}</p>
+                    <p><strong>UID:</strong> ${data.uid || '-'}</p>
+                    <p><strong>WA:</strong> ${data.wa || '-'}</p>
+                    <p><strong>Email:</strong> ${data.email || '-'}</p>
+                    <p><strong>Kota:</strong> ${data.kota || '-'}</p>
+                    <p><strong>Medsos:</strong> <a href="${data.sosmed}" target="_blank">${data.sosmed}</a></p>
+                    <p><strong>Poin:</strong> ${data.points || 0}</p>
+                    <p><strong>Status:</strong> ${data.status}</p>
+                    <p><strong>Tgl Daftar:</strong> ${data.date ? new Date(data.date).toLocaleString() : '-'}</p>
+                </div>
+            `;
+        } else {
+            detailHtml = `
+                <div style="padding:16px;">
+                    <h3 style="color:#D81B60;">👥 Detail Squad</h3>
+                    <p><strong>ID:</strong> ${data.id}</p>
+                    <p><strong>Team:</strong> ${escapeHtml(data.teamName || '-')}</p>
+                    <p><strong>Perwakilan:</strong> ${escapeHtml(data.perwakilan || '-')}</p>
+                    <p><strong>WA:</strong> ${data.wa || '-'}</p>
+                    <p><strong>Email:</strong> ${data.email || '-'}</p>
+                    <p><strong>IG Team:</strong> <a href="${data.igTeam}" target="_blank">${data.igTeam}</a></p>
+                    <p><strong>Player Inti:</strong></p>
+                    <ul>${(data.playersInti || []).map(p => `<li>${escapeHtml(p.nick)} (UID: ${p.uid})</li>`).join('')}</ul>
+                    <p><strong>Poin:</strong> ${data.points || 0}</p>
+                    <p><strong>Status:</strong> ${data.status}</p>
+                </div>
+            `;
+        }
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.style.display = 'flex';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width:500px;">
+                <div class="modal-header"><h2>Detail Pendaftar</h2><span class="close" onclick="this.closest('.modal').remove()">&times;</span></div>
+                ${detailHtml}
+                <div style="padding:16px;border-top:1px solid #eee;">
+                    <button onclick="this.closest('.modal').remove()" class="btn-submit">Tutup</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    };
+    
+    // ==================== UPDATE ADMIN STATS ====================
+    function updateAdminStatsPage() {
+        let allData = window.registrations || [];
+        const total = allData.length;
+        const solo = allData.filter(r => r.type === 'solo').length;
+        const squad = allData.filter(r => r.type === 'squad').length;
+        const pending = allData.filter(r => r.status === 'pending').length;
+        const accepted = allData.filter(r => r.status === 'accepted').length;
+        const rejected = allData.filter(r => r.status === 'rejected').length;
+        const totalPoints = allData.reduce((sum, r) => sum + (r.points || 0), 0);
+        
+        const statsContainer = document.getElementById('adminStatsPage');
+        if(statsContainer) {
+            statsContainer.innerHTML = `
+                <div class="admin-stat-card"><div class="number">${total}</div><div class="label">Total</div></div>
+                <div class="admin-stat-card"><div class="number">${solo}</div><div class="label">Solo</div></div>
+                <div class="admin-stat-card"><div class="number">${squad}</div><div class="label">Squad</div></div>
+                <div class="admin-stat-card"><div class="number">${pending}</div><div class="label">Pending</div></div>
+                <div class="admin-stat-card"><div class="number">${accepted}</div><div class="label">Accepted</div></div>
+                <div class="admin-stat-card"><div class="number">${rejected}</div><div class="label">Rejected</div></div>
+                <div class="admin-stat-card"><div class="number">${totalPoints}</div><div class="label">Total Poin</div></div>
+            `;
+        }
+    }
+    
+    // ==================== EXPORT CSV ====================
+    window.exportToCSVPage = function() {
+        let allData = window.registrations || [];
+        let csv = "No,ID,Nama/Team,Jenis,WA,Email,Poin,Status,Tanggal\n";
+        allData.forEach((r, i) => { 
+            const name = r.type === 'solo' ? (r.nama || r.nickname) : r.teamName; 
+            csv += `"${i+1}","${r.id}","${(name || '').replace(/"/g, '""')}","${r.type}","${r.wa || ''}","${r.email || ''}","${r.points || 0}","${r.status}","${r.date || ''}"\n`; 
+        });
+        const blob = new Blob(["\uFEFF" + csv], {type: 'text/csv'});
+        const link = document.createElement('a'); 
+        link.href = URL.createObjectURL(blob); 
+        link.download = `ladieswar_${new Date().toISOString().slice(0,10)}.csv`; 
+        link.click();
+        showToast('📊 CSV berhasil diexport!', 'success');
+    };
+    
+    // ==================== BULK ACTIONS ====================
+    window.bulkAcceptAll = async function() {
+        let allData = window.registrations || [];
+        let pendingData = allData.filter(r => r.status === 'pending');
+        if(pendingData.length === 0) {
+            showToast('Tidak ada data pending!', 'info');
+            return;
+        }
+        if(confirm(`Terima semua ${pendingData.length} pendaftaran?`)) {
+            for(let r of pendingData) {
+                if(typeof window.updateStatusFirebase === 'function') {
+                    await window.updateStatusFirebase(r.id, 'accepted');
+                }
+                r.status = 'accepted';
+            }
+            window.registrations = allData;
+            showToast(`✅ ${pendingData.length} pendaftaran diterima!`, 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        }
+    };
+    
+    window.bulkDeleteAll = async function() {
+        let allData = window.registrations || [];
+        if(confirm(`⚠️ Hapus SEMUA ${allData.length} data? Tidak bisa dibatalkan!`)) {
+            for(let r of allData) {
+                if(typeof window.deleteDataFirebase === 'function') {
+                    await window.deleteDataFirebase(r.id);
+                }
+            }
+            window.registrations = [];
+            showToast(`🗑️ ${allData.length} data dihapus!`, 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        }
+    };
+    
+    window.resetAllPoints = async function() {
+        if(confirm('Reset semua poin ke 0?')) {
+            let allData = window.registrations || [];
+            for(let r of allData) {
+                if(typeof window.updatePointsFirebase === 'function') {
+                    await window.updatePointsFirebase(r.id, 0);
+                }
+                r.points = 0;
+            }
+            window.registrations = allData;
+            showToast('🔄 Semua poin direset!', 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        }
+    };
+    
+    window.backupData = function() {
+        let allData = window.registrations || [];
+        const blob = new Blob([JSON.stringify(allData, null, 2)], {type: 'application/json'});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `ladieswar_backup_${new Date().toISOString().slice(0,19)}.json`;
+        link.click();
+        showToast('💾 Backup berhasil!', 'success');
+    };
+    
+    window.sendWA = function() {
+        const phone = prompt('Nomor WA (contoh: 6281234567890):');
+        if(!phone) return;
+        const msg = prompt('Pesan:');
+        if(!msg) return;
+        window.open(`https://wa.me/${phone.replace(/^0/, '62')}?text=${encodeURIComponent(msg)}`, '_blank');
+    };
+    
+    // ==================== HELPER ====================
+    function escapeHtml(str) {
+        if(!str) return '-';
+        return str.replace(/[&<>]/g, function(m) {
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    // ==================== EVENT LISTENERS ====================
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            adminFilter = this.dataset.adminTabPage;
+            renderAdminTablePage();
+        });
+    });
+    
+    document.getElementById('adminSearchPage')?.addEventListener('input', (e) => { 
+        adminSearch = e.target.value.toLowerCase(); 
+        renderAdminTablePage(); 
+    });
+    
+    // Add bulk action buttons
+    setTimeout(() => {
+        const searchDiv = document.querySelector('.admin-search');
+        if(searchDiv && !document.getElementById('bulkActions')) {
+            const bulkDiv = document.createElement('div');
+            bulkDiv.id = 'bulkActions';
+            bulkDiv.style.cssText = 'display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;';
+            bulkDiv.innerHTML = `
+                <button onclick="bulkAcceptAll()" style="background:#4CAF50;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">✅ Accept Semua</button>
+                <button onclick="bulkDeleteAll()" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">🗑️ Hapus Semua</button>
+                <button onclick="resetAllPoints()" style="background:#ff9800;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">🔄 Reset Poin</button>
+                <button onclick="backupData()" style="background:#2196F3;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">💾 Backup</button>
+                <button onclick="sendWA()" style="background:#25D366;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">📱 Kirim WA</button>
+            `;
+            searchDiv.parentNode.insertBefore(bulkDiv, searchDiv);
+        }
+    }, 500);
+    
+    window.showToast = showToast;
+    console.log("✅ Admin script loaded!");
+</script>
+
+<audio id="bgMusic" src="music.mp3" autoplay loop style="display: none;"></audio>
+
+<script>
+    (function() {
+        const audio = document.getElementById('bgMusic');
+        audio.volume = 0.3; // volume 30%
+        audio.play().catch(() => {
+            // Jika autoplay diblokir, play saat user klik pertama kali
+            document.body.addEventListener('click', function playOnce() {
+                audio.play();
+                document.body.removeEventListener('click', playOnce);
+            }, { once: true });
+        });
+    })();
+</script>
+
+<script>
+    // ==================== POP UP FUNCTIONS ====================
+    function showPopup(num) {
+        const p = document.getElementById(`popup${num}`);
+        if(p) { p.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    }
+    function closePopup(num) {
+        const p = document.getElementById(`popup${num}`);
+        if(p) {
+            p.style.display = 'none';
+            if(num === 1) showPopup(2);
+            else if(num === 2) showPopup(3);
+            else if(num === 3) { document.body.style.overflow = ''; localStorage.setItem('popupShown', 'true'); }
+        }
+    }
+    window.addEventListener('DOMContentLoaded', () => { if(!localStorage.getItem('popupShown')) setTimeout(() => showPopup(1), 500); });
+
+    // Background music
+    const bgAudio = document.getElementById('bgMusic');
+    if(bgAudio) { bgAudio.volume = 0.3; bgAudio.play().catch(() => document.body.addEventListener('click', () => bgAudio.play(), { once: true })); }
+
+    // ==================== GLOBAL VARIABLES ====================
+    let adminFilter = 'all';
+    let adminSearch = '';
+
+    // ==================== SHOW/HIDE ADMIN PAGE ====================
+    window.showAdminPage = () => { 
+        document.getElementById('adminPage').style.display = 'block'; 
+        document.body.style.overflow = 'hidden';
+        if(typeof window.registrations !== 'undefined') {
+            setTimeout(() => {
+                renderAdminTablePage();
+                updateAdminStatsPage();
+            }, 100);
+        }
+    };
+    
+    window.hideAdminPage = () => { 
+        document.getElementById('adminPage').style.display = 'none'; 
+        document.body.style.overflow = ''; 
+    };
+    
+    // ==================== ADMIN LOGIN ====================
+    window.adminLoginPage = () => {
+        const u = document.getElementById('adminUserPage').value;
+        const p = document.getElementById('adminPassPage').value;
+        if(u === 'admin' && p === 'admin123') {
+            document.getElementById('adminLoginViewPage').style.display = 'none';
+            document.getElementById('adminDashboardPage').style.display = 'block';
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            showToast('✅ Login berhasil!', 'success');
+        } else {
+            showToast('❌ Username atau password salah!', 'error');
+        }
+    };
+    
+    // ==================== RENDER ADMIN TABLE ====================
+    window.renderAdminTablePage = () => {
+        let allData = window.registrations || [];
+        
+        let filtered = [...allData];
+        
+        if(adminFilter !== 'all' && !['pending','accepted','rejected'].includes(adminFilter)) {
+            filtered = filtered.filter(r => r.type === adminFilter);
+        }
+        if(['pending','accepted','rejected'].includes(adminFilter)) {
+            filtered = filtered.filter(r => r.status === adminFilter);
+        }
+        
+        if(adminSearch) {
+            filtered = filtered.filter(r => { 
+                const name = r.type === 'solo' ? (r.nama || r.nickname || '') : (r.teamName || ''); 
+                return name.toLowerCase().includes(adminSearch) || (r.wa || '').includes(adminSearch); 
+            });
+        }
+        
+        const tbody = document.getElementById('adminTableBodyPage');
+        if(!tbody) return;
+        
+        if(filtered.length === 0) { 
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center">Tidak ada data</td></tr>'; 
+            return; 
+        }
+        
+        tbody.innerHTML = filtered.map((r, idx) => {
+            const name = r.type === 'solo' ? (r.nama || r.nickname || '-') : (r.teamName || '-');
+            const statusClass = r.status === 'accepted' ? 'status-accepted' : (r.status === 'rejected' ? 'status-rejected' : 'status-pending');
+            const statusText = r.status === 'accepted' ? '✅ Diterima' : (r.status === 'rejected' ? '❌ Ditolak' : '⏳ Menunggu');
+            const date = r.date ? new Date(r.date).toLocaleDateString('id-ID') : '-';
+            const points = r.points || 0;
+            return `
+                <tr id="row-${r.id}">
+                    <td>${idx+1}</td>
+                    <td><strong>${escapeHtml(name)}</strong><br><small style="color:gray">${r.id ? r.id.slice(-8) : '-'}</small></td>
+                    <td>${r.type === 'solo' ? '🎮 Solo' : '👥 Squad'}</td>
+                    <td><a href="https://wa.me/${(r.wa || '').replace(/^0/, '62').replace(/[^0-9]/g, '')}" target="_blank" style="color:#25D366;text-decoration:none;">📱 ${r.wa || '-'}</a></td>
+                    <td class="point-display">
+                        <strong style="font-size:1.1rem;" id="pointDisplay-${r.id}">${points}</strong>
+                        <br>
+                        <div style="display:flex;gap:3px;margin-top:5px;">
+                            <input type="number" id="pointInput-${r.id}" class="point-input" placeholder="+/-" value="0" step="1" style="width:55px;">
+                            <button class="btn-point" onclick="updatePointsAdmin('${r.id}')">Set</button>
+                        </div>
+                    </td>
+                    <td>${date}</td>
+                    <td class="${statusClass}">${statusText}</td>
+                    <td>
+                        <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                            <button class="btn-small btn-accept" onclick="updateStatusAdmin('${r.id}', 'accepted')" ${r.status === 'accepted' ? 'disabled' : ''}>Accept</button>
+                            <button class="btn-small btn-reject" onclick="updateStatusAdmin('${r.id}', 'rejected')" ${r.status === 'rejected' ? 'disabled' : ''}>Reject</button>
+                            <button class="btn-small btn-delete" onclick="deleteDataAdmin('${r.id}')">Delete</button>
+                            <button class="btn-small" onclick="viewDetailAdmin('${r.id}')" style="background:#2196F3;color:white;">Detail</button>
+                            <a href="https://wa.me/${(r.wa || '').replace(/^0/, '62').replace(/[^0-9]/g, '')}" target="_blank" class="btn-small btn-wa-small">WA</a>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    };
+    
+    // ==================== UPDATE POINTS ====================
+    window.updatePointsAdmin = async function(id) {
+        const input = document.getElementById(`pointInput-${id}`);
+        const change = parseInt(input.value);
+        if(isNaN(change)) { 
+            showToast('Masukkan angka yang valid!', 'error'); 
+            return; 
+        }
+        
+        let currentData = window.registrations || [];
+        const idx = currentData.findIndex(r => r.id === id);
+        if(idx !== -1) {
+            const oldPoints = currentData[idx].points || 0;
+            const newPoints = oldPoints + change;
+            currentData[idx].points = newPoints;
+            window.registrations = currentData;
+            
+            try {
+                if(typeof window.updatePointsFirebase === 'function') {
+                    await window.updatePointsFirebase(id, newPoints);
+                }
+                const displaySpan = document.getElementById(`pointDisplay-${id}`);
+                if(displaySpan) displaySpan.innerText = newPoints;
+                input.value = 0;
+                showToast(`✅ Poin: ${oldPoints} → ${newPoints}`, 'success');
+                if(typeof updateLeaderboard === 'function') updateLeaderboard();
+                renderAdminTablePage();
+            } catch(e) { 
+                showToast('Error: ' + e.message, 'error'); 
+            }
+        }
+    };
+    
+    // ==================== UPDATE STATUS ====================
+    window.updateStatusAdmin = async function(id, status) {
+        try {
+            if(typeof window.updateStatusFirebase === 'function') {
+                await window.updateStatusFirebase(id, status);
+            }
+            let currentData = window.registrations || [];
+            const idx = currentData.findIndex(r => r.id === id);
+            if(idx !== -1) {
+                currentData[idx].status = status;
+                window.registrations = currentData;
+            }
+            showToast(`✅ Status diubah menjadi ${status === 'accepted' ? 'Diterima' : 'Ditolak'}!`, 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        } catch(e) { 
+            showToast('Error: ' + e.message, 'error'); 
+        }
+    };
+    
+    // ==================== DELETE DATA ====================
+    window.deleteDataAdmin = async function(id) {
+        if(confirm('⚠️ Yakin hapus data ini? Tidak bisa dibatalkan!')) {
+            try {
+                if(typeof window.deleteDataFirebase === 'function') {
+                    await window.deleteDataFirebase(id);
+                }
+                let currentData = window.registrations || [];
+                currentData = currentData.filter(r => r.id !== id);
+                window.registrations = currentData;
+                showToast('🗑️ Data berhasil dihapus!', 'success');
+                renderAdminTablePage();
+                updateAdminStatsPage();
+                if(typeof updateLeaderboard === 'function') updateLeaderboard();
+            } catch(e) { 
+                showToast('Error: ' + e.message, 'error'); 
+            }
+        }
+    };
+    
+    // ==================== VIEW DETAIL LENGKAP ====================
+    window.viewDetailAdmin = function(id) {
+        let currentData = window.registrations || [];
+        const data = currentData.find(r => r.id === id);
+        if(!data) {
+            showToast('Data tidak ditemukan!', 'error');
+            return;
+        }
+        
+        let detailHtml = '';
+        if(data.type === 'solo') {
+            detailHtml = `
+                <div style="padding:16px;">
+                    <h3 style="color:#D81B60;">📋 Detail Pendaftar Solo</h3>
+                    <p><strong>ID Registrasi:</strong> ${data.id}</p>
+                    <p><strong>Nama Lengkap:</strong> ${escapeHtml(data.nama || '-')}</p>
+                    <p><strong>Nickname Blood Strike:</strong> ${escapeHtml(data.nickname || '-')}</p>
+                    <p><strong>UID Blood Strike:</strong> ${data.uid || '-'}</p>
+                    <p><strong>Nomor WhatsApp:</strong> <a href="https://wa.me/${(data.wa || '').replace(/^0/, '62')}" target="_blank">${data.wa || '-'}</a></p>
+                    <p><strong>Email:</strong> ${data.email || '-'}</p>
+                    <p><strong>Kota / Region:</strong> ${data.kota || '-'}</p>
+                    <p><strong>Link Instagram/TikTok:</strong> <a href="${data.sosmed}" target="_blank">${data.sosmed || '-'}</a></p>
+                    <p><strong>Poin Leaderboard:</strong> <strong style="color:#D81B60">${data.points || 0}</strong></p>
+                    <p><strong>Status Pendaftaran:</strong> ${data.status === 'accepted' ? '✅ Diterima' : (data.status === 'rejected' ? '❌ Ditolak' : '⏳ Menunggu Verifikasi')}</p>
+                    <p><strong>Tanggal Daftar:</strong> ${data.date ? new Date(data.date).toLocaleString('id-ID') : '-'}</p>
+                </div>
+            `;
+        } else {
+            detailHtml = `
+                <div style="padding:16px;">
+                    <h3 style="color:#D81B60;">👥 Detail Pendaftar Squad</h3>
+                    <p><strong>ID Registrasi:</strong> ${data.id}</p>
+                    <p><strong>Nama Team:</strong> ${escapeHtml(data.teamName || '-')}</p>
+                    <p><strong>Nama Perwakilan:</strong> ${escapeHtml(data.perwakilan || '-')}</p>
+                    <p><strong>Nomor WA Perwakilan:</strong> <a href="https://wa.me/${(data.wa || '').replace(/^0/, '62')}" target="_blank">${data.wa || '-'}</a></p>
+                    <p><strong>Email:</strong> ${data.email || '-'}</p>
+                    <p><strong>Link Medsos Team:</strong> <a href="${data.igTeam}" target="_blank">${data.igTeam || '-'}</a></p>
+                    <p><strong>Logo Team:</strong> ${data.logo ? '<a href="'+data.logo+'" target="_blank">📷 Lihat Logo</a>' : '-'}</p>
+                    <p><strong>Poin Leaderboard:</strong> <strong style="color:#D81B60">${data.points || 0}</strong></p>
+                    <p><strong>Status Pendaftaran:</strong> ${data.status === 'accepted' ? '✅ Diterima' : (data.status === 'rejected' ? '❌ Ditolak' : '⏳ Menunggu Verifikasi')}</p>
+                    <p><strong>Tanggal Daftar:</strong> ${data.date ? new Date(data.date).toLocaleString('id-ID') : '-'}</p>
+                    <hr style="margin:16px 0;">
+                    <h4>👥 Player Inti (4 Orang)</h4>
+                    ${(data.playersInti || []).map((p, i) => `<p><strong>Player ${i+1}:</strong> ${escapeHtml(p.nick)} | UID: ${p.uid} | <a href="${p.medsos}" target="_blank">Medsos</a></p>`).join('')}
+                    <h4>🔄 Pemain Cadangan (2 Orang)</h4>
+                    ${(data.playersCadangan || []).map((p, i) => `<p><strong>Cadangan ${i+1}:</strong> ${escapeHtml(p.nick)} | UID: ${p.uid} | <a href="${p.medsos}" target="_blank">Medsos</a></p>`).join('')}
+                </div>
+            `;
+        }
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.style.display = 'flex';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width:550px;">
+                <div class="modal-header"><h2>Detail Pendaftar</h2><span class="close" onclick="this.closest('.modal').remove()">&times;</span></div>
+                ${detailHtml}
+                <div style="padding:16px;border-top:1px solid #eee;">
+                    <button onclick="this.closest('.modal').remove()" class="btn-submit">Tutup</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    };
+    
+    // ==================== UPDATE ADMIN STATS ====================
+    function updateAdminStatsPage() {
+        let allData = window.registrations || [];
+        const total = allData.length;
+        const solo = allData.filter(r => r.type === 'solo').length;
+        const squad = allData.filter(r => r.type === 'squad').length;
+        const pending = allData.filter(r => r.status === 'pending').length;
+        const accepted = allData.filter(r => r.status === 'accepted').length;
+        const rejected = allData.filter(r => r.status === 'rejected').length;
+        const totalPoints = allData.reduce((sum, r) => sum + (r.points || 0), 0);
+        
+        const statsContainer = document.getElementById('adminStatsPage');
+        if(statsContainer) {
+            statsContainer.innerHTML = `
+                <div class="admin-stat-card"><div class="number">${total}</div><div class="label">Total</div></div>
+                <div class="admin-stat-card"><div class="number">${solo}</div><div class="label">Solo</div></div>
+                <div class="admin-stat-card"><div class="number">${squad}</div><div class="label">Squad</div></div>
+                <div class="admin-stat-card"><div class="number">${pending}</div><div class="label">Pending</div></div>
+                <div class="admin-stat-card"><div class="number">${accepted}</div><div class="label">Accepted</div></div>
+                <div class="admin-stat-card"><div class="number">${rejected}</div><div class="label">Rejected</div></div>
+                <div class="admin-stat-card"><div class="number">${totalPoints}</div><div class="label">Total Poin</div></div>
+            `;
+        }
+    }
+    
+    // ==================== EXPORT CSV ====================
+    window.exportToCSVPage = function() {
+        let allData = window.registrations || [];
+        let csv = "No,ID,Nama/Team,Jenis,WA,Email,Poin,Status,Tanggal\n";
+        allData.forEach((r, i) => { 
+            const name = r.type === 'solo' ? (r.nama || r.nickname) : r.teamName; 
+            csv += `"${i+1}","${r.id}","${(name || '').replace(/"/g, '""')}","${r.type}","${r.wa || ''}","${r.email || ''}","${r.points || 0}","${r.status}","${r.date || ''}"\n`; 
+        });
+        const blob = new Blob(["\uFEFF" + csv], {type: 'text/csv'});
+        const link = document.createElement('a'); 
+        link.href = URL.createObjectURL(blob); 
+        link.download = `ladieswar_${new Date().toISOString().slice(0,10)}.csv`; 
+        link.click();
+        showToast('📊 CSV berhasil diexport!', 'success');
+    };
+    
+    // ==================== BULK ACTIONS ====================
+    window.bulkAcceptAll = async function() {
+        let allData = window.registrations || [];
+        let pendingData = allData.filter(r => r.status === 'pending');
+        if(pendingData.length === 0) {
+            showToast('Tidak ada data pending!', 'info');
+            return;
+        }
+        if(confirm(`Terima semua ${pendingData.length} pendaftaran?`)) {
+            for(let r of pendingData) {
+                if(typeof window.updateStatusFirebase === 'function') {
+                    await window.updateStatusFirebase(r.id, 'accepted');
+                }
+                r.status = 'accepted';
+            }
+            window.registrations = allData;
+            showToast(`✅ ${pendingData.length} pendaftaran diterima!`, 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        }
+    };
+    
+    window.bulkDeleteAll = async function() {
+        let allData = window.registrations || [];
+        if(confirm(`⚠️ Hapus SEMUA ${allData.length} data? Tidak bisa dibatalkan!`)) {
+            for(let r of allData) {
+                if(typeof window.deleteDataFirebase === 'function') {
+                    await window.deleteDataFirebase(r.id);
+                }
+            }
+            window.registrations = [];
+            showToast(`🗑️ ${allData.length} data dihapus!`, 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        }
+    };
+    
+    window.resetAllPoints = async function() {
+        if(confirm('Reset semua poin ke 0?')) {
+            let allData = window.registrations || [];
+            for(let r of allData) {
+                if(typeof window.updatePointsFirebase === 'function') {
+                    await window.updatePointsFirebase(r.id, 0);
+                }
+                r.points = 0;
+            }
+            window.registrations = allData;
+            showToast('🔄 Semua poin direset!', 'success');
+            renderAdminTablePage();
+            updateAdminStatsPage();
+            if(typeof updateLeaderboard === 'function') updateLeaderboard();
+        }
+    };
+    
+    window.backupData = function() {
+        let allData = window.registrations || [];
+        const blob = new Blob([JSON.stringify(allData, null, 2)], {type: 'application/json'});
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `ladieswar_backup_${new Date().toISOString().slice(0,19)}.json`;
+        link.click();
+        showToast('💾 Backup berhasil!', 'success');
+    };
+    
+    window.sendWA = function() {
+        const phone = prompt('Nomor WA (contoh: 6281234567890):');
+        if(!phone) return;
+        const msg = prompt('Pesan:');
+        if(!msg) return;
+        window.open(`https://wa.me/${phone.replace(/^0/, '62')}?text=${encodeURIComponent(msg)}`, '_blank');
+    };
+    
+    // ==================== HELPER ESCAPE HTML ====================
+    function escapeHtml(str) {
+        if(!str) return '-';
+        return str.replace(/[&<>]/g, function(m) {
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    // ==================== EVENT LISTENERS ====================
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            adminFilter = this.dataset.adminTabPage;
+            renderAdminTablePage();
+        });
+    });
+    
+    document.getElementById('adminSearchPage')?.addEventListener('input', (e) => { 
+        adminSearch = e.target.value.toLowerCase(); 
+        renderAdminTablePage(); 
+    });
+    
+    // Add bulk action buttons
+    setTimeout(() => {
+        const searchDiv = document.querySelector('.admin-search');
+        if(searchDiv && !document.getElementById('bulkActions')) {
+            const bulkDiv = document.createElement('div');
+            bulkDiv.id = 'bulkActions';
+            bulkDiv.style.cssText = 'display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;';
+            bulkDiv.innerHTML = `
+                <button onclick="bulkAcceptAll()" style="background:#4CAF50;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">✅ Accept Semua</button>
+                <button onclick="bulkDeleteAll()" style="background:#f44336;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">🗑️ Hapus Semua</button>
+                <button onclick="resetAllPoints()" style="background:#ff9800;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">🔄 Reset Poin</button>
+                <button onclick="backupData()" style="background:#2196F3;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">💾 Backup</button>
+                <button onclick="sendWA()" style="background:#25D366;color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;">📱 Kirim WA</button>
+            `;
+            searchDiv.parentNode.insertBefore(bulkDiv, searchDiv);
+        }
+    }, 500);
+    
+    window.showToast = showToast;
+    console.log("✅ Admin script loaded!");
+</script>
+
+</body>
+</html>
